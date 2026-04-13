@@ -95,6 +95,18 @@ if (tickerEl) {
   })();
 }
 
+// ── Analytics — CTA click events ─────────────────────────────────────────────
+document.querySelectorAll('a[href="#contact"], button[type="submit"]').forEach((el) => {
+  el.addEventListener("click", () => {
+    if (typeof gtag !== "undefined") {
+      gtag("event", "cta_click", {
+        event_category: "engagement",
+        event_label: el.textContent.trim().slice(0, 60),
+      });
+    }
+  });
+});
+
 // ── Contact form ──────────────────────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 if (params.get("success") === "true") {
