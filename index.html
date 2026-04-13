@@ -52,6 +52,32 @@
           Deadlines slip. Leaders chase updates on the phone.
           We build the system that fixes this — custom-fit to your org.
         </p>
+
+        <!-- Loss calculator -->
+        <div class="hero-calc reveal">
+          <div class="hc-top">
+            <span class="hc-pulse"></span>
+            <span class="hc-prompt">Right now, your team is losing money. How many people?</span>
+          </div>
+          <div class="hc-row">
+            <div class="hc-counter-wrap">
+              <div class="hc-counter">
+                <button class="hc-btn" id="hc-dec" aria-label="Decrease">−</button>
+                <span class="hc-n" id="hc-n">20</span>
+                <button class="hc-btn" id="hc-inc" aria-label="Increase">+</button>
+              </div>
+              <span class="hc-unit">people on your team</span>
+            </div>
+            <div class="hc-arrow">→</div>
+            <div class="hc-loss">
+              <span class="hc-loss-label">You're losing</span>
+              <span class="hc-loss-amt">₹<span id="hc-month">2,50,000</span><span class="hc-mo">/mo</span></span>
+              <span class="hc-loss-hr">₹<span id="hc-hour">347</span>/hr &nbsp;·&nbsp; every hour, 24×7</span>
+            </div>
+          </div>
+          <div class="hc-note">Based on 1 hr/person/day lost to follow-ups × ₹500/hr avg cost &nbsp;·&nbsp; <a href="#roi">See the full math ↓</a></div>
+        </div>
+
         <div class="hero-actions reveal">
           <a class="btn btn-primary btn-lg" href="#contact">Book a Free Demo</a>
           <a class="btn btn-outline btn-lg" href="#pain">See the problem</a>
@@ -164,6 +190,118 @@
             <span class="ps-text">accountability exists inside a WhatsApp group</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- COST OF INACTION -->
+    <section class="drain-section" id="roi">
+      <div class="container">
+
+        <div class="drain-top reveal">
+          <p class="drain-eyebrow">The Cost of Inaction</p>
+          <h2 class="drain-h">Your team is losing money.<br>Right now. Every hour.</h2>
+          <p class="drain-sub">While tasks sit untracked in WhatsApp groups, your most expensive resource — people's time — is draining away. Here's what that looks like in rupees.</p>
+        </div>
+
+        <!-- Live ticker -->
+        <div class="drain-ticker-wrap reveal">
+          <div class="drain-ticker-label">estimated loss since you opened this page</div>
+          <div class="drain-ticker" id="drain-ticker">
+            <span class="dt-currency">₹</span><span class="dt-amount" id="dt-amount">0.00</span>
+          </div>
+          <div class="drain-ticker-rate">running at <strong>₹347/hour</strong> &nbsp;·&nbsp; <strong>₹5.78/minute</strong> &nbsp;·&nbsp; based on 20 people × 1 hr/day × ₹500/hr</div>
+        </div>
+
+        <!-- Math breakdown -->
+        <div class="drain-math reveal">
+          <div class="dm-step">
+            <div class="dm-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+            </div>
+            <div class="dm-val">20 people</div>
+            <div class="dm-desc">chasing status, following up, repeating updates</div>
+          </div>
+          <div class="dm-arrow">×</div>
+          <div class="dm-step">
+            <div class="dm-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+            </div>
+            <div class="dm-val">1 hr/day</div>
+            <div class="dm-desc">wasted per person on manual follow-ups &amp; status calls</div>
+          </div>
+          <div class="dm-arrow">×</div>
+          <div class="dm-step">
+            <div class="dm-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="dm-val">₹500/hr</div>
+            <div class="dm-desc">average fully-loaded cost per executive hour</div>
+          </div>
+          <div class="dm-arrow dm-eq">=</div>
+          <div class="dm-step dm-result">
+            <div class="dm-icon dm-icon-red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <div class="dm-val dm-val-red">₹2,50,000</div>
+            <div class="dm-desc">lost every single month — gone into thin air</div>
+          </div>
+        </div>
+
+        <!-- Monthly projection bar -->
+        <div class="drain-projection reveal">
+          <div class="dp-row">
+            <div class="dp-card">
+              <div class="dp-label">Monthly loss</div>
+              <div class="dp-num">₹2.5L</div>
+              <div class="dp-bar"><div class="dp-fill" style="width:100%"></div></div>
+            </div>
+            <div class="dp-card">
+              <div class="dp-label">In 2 months (if nothing changes)</div>
+              <div class="dp-num dp-num-red">₹5L</div>
+              <div class="dp-bar"><div class="dp-fill dp-fill-red" style="width:100%"></div></div>
+            </div>
+            <div class="dp-card">
+              <div class="dp-label">Annual drain</div>
+              <div class="dp-num dp-num-red">₹30L</div>
+              <div class="dp-bar"><div class="dp-fill dp-fill-red" style="width:100%"></div></div>
+            </div>
+            <div class="dp-card dp-card-green">
+              <div class="dp-label">Payback period with our system</div>
+              <div class="dp-num dp-num-green">3 months</div>
+              <div class="dp-bar"><div class="dp-fill dp-fill-green" style="width:25%"></div></div>
+              <div class="dp-sub">then pure savings, forever</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics strip -->
+        <div class="drain-metrics reveal">
+          <div class="dmet-item">
+            <span class="dmet-val">−85%</span>
+            <span class="dmet-label">follow-up time<br><em>13 hrs → 2 hrs/week</em></span>
+          </div>
+          <div class="dmet-div"></div>
+          <div class="dmet-item">
+            <span class="dmet-val">−87%</span>
+            <span class="dmet-label">missed deadlines<br><em>23 → 3 per month</em></span>
+          </div>
+          <div class="dmet-div"></div>
+          <div class="dmet-item">
+            <span class="dmet-val">−86%</span>
+            <span class="dmet-label">status calls<br><em>35 → 5 per week</em></span>
+          </div>
+          <div class="dmet-div"></div>
+          <div class="dmet-item">
+            <span class="dmet-val dmet-green">+28%</span>
+            <span class="dmet-label">task completion<br><em>68% → 96%</em></span>
+          </div>
+        </div>
+
+        <div class="drain-cta reveal">
+          <p class="drain-cta-text">This system is already live at Sugam Group — 100+ users, ₹2.5L saved every month.<br>You can have the same thing running in 4–6 weeks.</p>
+          <a class="btn btn-danger btn-lg" href="#contact">Stop the drain — Book a free demo</a>
+        </div>
+
       </div>
     </section>
 

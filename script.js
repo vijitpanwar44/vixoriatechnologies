@@ -36,6 +36,65 @@ window.addEventListener("scroll", () => {
     : "none";
 }, { passive: true });
 
+// ── Loss calculator + live drain ticker ──────────────────────────────────────
+let teamSize = 20;
+const WORK_DAYS   = 25;   // working days per month
+const HOURLY_RATE = 500;  // ₹500/hr average fully-loaded cost
+const HRS_DAY     = 1;    // hours wasted per person per day
+
+function calcMonthly(n)    { return n * HRS_DAY * HOURLY_RATE * WORK_DAYS; }
+function calcHourlyRate(n) { return calcMonthly(n) / (30 * 24); } // spread over continuous 30-day month
+
+let tickerRatePerMs = calcHourlyRate(teamSize) / 3_600_000;
+const tickerStart   = Date.now();
+
+function formatINR(n) {
+  return n.toLocaleString("en-IN");
+}
+
+function updateCalc() {
+  const monthly = calcMonthly(teamSize);
+  const hourly  = calcHourlyRate(teamSize);
+  tickerRatePerMs = hourly / 3_600_000;
+
+  const elMonth = document.getElementById("hc-month");
+  const elHour  = document.getElementById("hc-hour");
+  if (elMonth) elMonth.textContent = formatINR(monthly);
+  if (elHour)  elHour.textContent  = Math.round(hourly);
+
+  // Keep drain section ticker rate label in sync
+  const dtRate = document.querySelector(".drain-ticker-rate");
+  if (dtRate) {
+    dtRate.innerHTML =
+      `running at <strong>₹${Math.round(hourly)}/hour</strong> &nbsp;·&nbsp; ` +
+      `<strong>₹${(hourly / 60).toFixed(2)}/minute</strong> &nbsp;·&nbsp; ` +
+      `based on ${teamSize} people × 1 hr/day × ₹${HOURLY_RATE}/hr`;
+  }
+}
+
+const hcDec = document.getElementById("hc-dec");
+const hcInc = document.getElementById("hc-inc");
+const hcNum = document.getElementById("hc-n");
+
+if (hcDec && hcInc && hcNum) {
+  hcDec.addEventListener("click", () => {
+    if (teamSize > 1) { teamSize--; hcNum.textContent = teamSize; updateCalc(); }
+  });
+  hcInc.addEventListener("click", () => {
+    if (teamSize < 500) { teamSize++; hcNum.textContent = teamSize; updateCalc(); }
+  });
+}
+
+// Live ticker
+const tickerEl = document.getElementById("dt-amount");
+if (tickerEl) {
+  (function tick() {
+    const loss = (Date.now() - tickerStart) * tickerRatePerMs;
+    tickerEl.textContent = loss.toFixed(2);
+    requestAnimationFrame(tick);
+  })();
+}
+
 // ── Contact form ──────────────────────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 if (params.get("success") === "true") {
