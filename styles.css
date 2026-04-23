@@ -549,6 +549,19 @@ h1,h2,h3,h4 {
 .form-note {
   text-align: center; font-size: .8rem; color: var(--muted); margin-top: .25rem;
 }
+.form-divider {
+  display: flex; align-items: center; gap: .75rem;
+  color: var(--muted); font-size: .8rem; margin: .25rem 0;
+}
+.form-divider::before, .form-divider::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
+}
+.btn-whatsapp {
+  display: flex; align-items: center; justify-content: center;
+  background: #25D366; color: #fff; border: none;
+  text-decoration: none;
+}
+.btn-whatsapp:hover { background: #1ebe5d; color: #fff; }
 
 .form-success {
   text-align: center; padding: 3rem;
