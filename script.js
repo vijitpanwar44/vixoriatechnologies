@@ -35,10 +35,11 @@ if (form) {
     btn.textContent = "Sending…";
     btn.disabled = true;
     try {
-      const res = await fetch("/", {
+      const data = Object.fromEntries(new FormData(form));
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(new FormData(form)).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       if (res.ok) {
         form.style.display = "none";
@@ -54,9 +55,4 @@ if (form) {
       alert("Something went wrong. Please email us at vijit.panwar42@gmail.com");
     }
   });
-}
-
-/* ── Show success if redirected back ──────────────────────────────────── */
-if (new URLSearchParams(window.location.search).get("success") === "true") {
-  if (form && success) { form.style.display = "none"; success.style.display = "block"; }
 }
