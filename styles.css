@@ -293,7 +293,8 @@ h1,h2,h3,h4 {
 .cb-logos { display: flex; align-items: center; gap: 1.5rem; }
 .cb-logo  { font-weight: 700; font-size: 1rem; font-family: "Bricolage Grotesque", sans-serif; color: var(--text-2); }
 .cb-logo.cb-muted { color: var(--border); font-style: italic; font-weight: 500; font-size: .85rem; }
-.cb-div   { width: 1px; height: 20px; background: var(--border); }
+.cb-div        { width: 1px; height: 20px; background: var(--border); }
+.cb-egear-logo { height: 44px; width: auto; object-fit: contain; opacity: .85; }
 
 /* ── SERVICES ───────────────────────────────────────────────────────────── */
 .services-grid {
@@ -365,6 +366,21 @@ h1,h2,h3,h4 {
   font-size: .73rem; font-weight: 600; padding: 3px 10px;
   border-radius: 99px; background: #f3f4f6;
   color: var(--text-2); border: 1px solid var(--border);
+}
+
+/* Secondary case card */
+.case-secondary {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem 2.25rem;
+  margin-top: 2rem; box-shadow: var(--shadow);
+}
+.csl-top   { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+.csl-logo  { height: 56px; width: auto; object-fit: contain; }
+.csl-live  { font-size: .75rem; font-weight: 700; color: #16a34a; letter-spacing: .03em; }
+.csl-title { font-size: 1.2rem; margin-bottom: .5rem; }
+.csl-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem;
 }
 
 /* Case study window */
