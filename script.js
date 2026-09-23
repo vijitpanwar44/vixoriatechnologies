@@ -1,58 +1,73 @@
-/* ── Reveal on scroll ──────────────────────────────────────────────────── */
-const observer = new IntersectionObserver(
-  (entries) => entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add("in"); observer.unobserve(e.target); }
-  }),
-  { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-);
-document.querySelectorAll(".reveal").forEach((el, i) => {
-  el.style.transitionDelay = `${Math.min(i % 6 * 65, 260)}ms`;
-  observer.observe(el);
-});
+const header = document.querySelector(".site-header");
+const menuButton = document.getElementById("menu-button");
+const mobileNav = document.getElementById("mobile-nav");
 
-/* ── Mobile nav ────────────────────────────────────────────────────────── */
-const hamburger  = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobile-menu");
-if (hamburger && mobileMenu) {
-  hamburger.addEventListener("click", () => mobileMenu.classList.toggle("open"));
-  mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
+function closeMenu() {
+  if (!menuButton || !mobileNav) return;
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open menu");
+  mobileNav.classList.remove("open");
+  document.body.classList.remove("menu-open");
 }
 
-/* ── Sticky nav shadow ─────────────────────────────────────────────────── */
-const nav = document.querySelector(".nav-wrap");
-window.addEventListener("scroll", () => {
-  nav.style.boxShadow = window.scrollY > 20 ? "0 2px 20px rgba(0,0,0,.08)" : "none";
-}, { passive: true });
+if (menuButton && mobileNav) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Open menu" : "Close menu");
+    mobileNav.classList.toggle("open", !isOpen);
+    document.body.classList.toggle("menu-open", !isOpen);
+  });
+  mobileNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+}
 
-/* ── Contact form ──────────────────────────────────────────────────────── */
-const form    = document.getElementById("contact-form");
-const success = document.getElementById("form-success");
+function updateHeader() {
+  if (header) header.classList.toggle("scrolled", window.scrollY > 12);
+}
+window.addEventListener("scroll", updateHeader, { passive: true });
+updateHeader();
+
+const revealItems = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach((item) => observer.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("in"));
+}
+
+const form = document.getElementById("contact-form");
+const formSuccess = document.getElementById("form-success");
 if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector("button[type=submit]");
-    const orig = btn.textContent;
-    btn.textContent = "Sending…";
-    btn.disabled = true;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = form.querySelector("button[type='submit']");
+    const originalText = button.innerHTML;
+    button.textContent = "Sending…";
+    button.disabled = true;
+
     try {
-      const data = Object.fromEntries(new FormData(form));
-      const res = await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
-      if (res.ok) {
-        form.style.display = "none";
-        if (success) success.style.display = "block";
-      } else {
-        btn.textContent = orig;
-        btn.disabled = false;
-        alert("Something went wrong. Please email us at vijit.panwar42@gmail.com");
-      }
+      if (!response.ok) throw new Error("Request failed");
+      form.hidden = true;
+      if (formSuccess) formSuccess.hidden = false;
     } catch {
-      btn.textContent = orig;
-      btn.disabled = false;
-      alert("Something went wrong. Please email us at vijit.panwar42@gmail.com");
+      button.innerHTML = originalText;
+      button.disabled = false;
+      window.alert("We could not send your enquiry. Please contact us by email or WhatsApp.");
     }
   });
 }
+
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
