@@ -21,6 +21,33 @@ if (menuButton && mobileNav) {
   mobileNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 }
 
+const navDrops = [...document.querySelectorAll(".nav-drop")];
+function closeNavDrops(except) {
+  navDrops.forEach((drop) => {
+    if (drop === except) return;
+    drop.dataset.open = "false";
+    drop.querySelector(".nav-trigger")?.setAttribute("aria-expanded", "false");
+  });
+}
+navDrops.forEach((drop) => {
+  const trigger = drop.querySelector(".nav-trigger");
+  trigger?.addEventListener("click", () => {
+    const shouldOpen = drop.dataset.open !== "true";
+    closeNavDrops();
+    drop.dataset.open = String(shouldOpen);
+    trigger.setAttribute("aria-expanded", String(shouldOpen));
+  });
+});
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".nav-drop")) closeNavDrops();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeNavDrops();
+    closeMenu();
+  }
+});
+
 function updateHeader() {
   if (header) header.classList.toggle("scrolled", window.scrollY > 12);
 }

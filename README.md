@@ -1,34 +1,21 @@
-# Vixoria Technologies Website
+# Vixoria Technologies website
 
-This is a static site. The fastest way to make it live is Netlify.
+The public website at `https://www.vixoriatechnologies.com/` is a static site deployed on Vercel. The contact form uses the Vercel function in `api/contact.js` and needs `RESEND_API_KEY` in the Vercel project environment.
 
-## What is already prepared
+## Content and pages
 
-- Static hosting works directly from the repo root
-- `netlify.toml` points Netlify at the correct publish directory
-- The contact form is configured for Netlify Forms so submissions are captured after deployment
+- `index.html`, `styles.css`, `site-pages.css` and `script.js` provide the homepage and shared design.
+- `site/catalog.mjs` is the source for the 34 service and technology offerings and 15 industry pages.
+- `scripts/build-site.mjs` generates the navigation, service pages, industry pages, TrueWorker and WikiSchools case studies, and `sitemap.xml`.
+- Generated pages are checked in under `services/`, `industries/` and `work/` so static hosting can serve them directly.
 
-## Deploy on Netlify
+After editing the catalog or page generator, run:
 
-1. Push this folder to a GitHub repository.
-2. Sign in to Netlify and click `Add new site` -> `Import an existing project`.
-3. Connect your GitHub account and select the repository.
-4. Use these settings:
-   - Build command: leave blank
-   - Publish directory: `.`
-5. Click `Deploy site`.
+```powershell
+npm run build
+npm run check:site
+```
 
-## Custom domain
+To preview locally, run `python -m http.server 4179` from the repository root and open `http://localhost:4179/`. The local static preview cannot submit the contact form to Vercel's `/api/contact` function.
 
-After deployment:
-
-1. Open the site in Netlify.
-2. Go to `Domain management`.
-3. Add your domain, for example `vixoriatech.com`.
-4. Update your DNS records where the domain is registered using the values Netlify shows.
-
-## Contact form submissions
-
-Netlify will collect form submissions automatically once the deployed site has received its first real submission. You can view entries in:
-
-`Netlify -> Site -> Forms`
+The service and industry pages describe possible solutions. They do not claim completed client projects or results. Case studies cover Vixoria's own products only.

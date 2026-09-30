@@ -1,0 +1,10 @@
+outreach-dashboard/
+outreach-cookies.txt
+Start Outreach.cmd
+.claude/
+.agents/
+.codex/
+.env*
+node_modules/
+public/
+site-*.png

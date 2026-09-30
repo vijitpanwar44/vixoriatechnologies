@@ -1,6 +1,11 @@
 {
   "name": "vixoria-technologies",
   "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build:site",
+    "build:site": "node scripts/build-site.mjs",
+    "check:site": "node scripts/check-site.mjs"
+  },
   "dependencies": {
     "resend": "^3.2.0"
   }
