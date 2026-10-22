@@ -112,7 +112,7 @@ whatsappWidget.innerHTML = `
   </button>
   <div class="whatsapp-panel" id="whatsapp-panel" role="region" aria-label="WhatsApp enquiry" hidden>
     <div class="whatsapp-panel-header">
-      <span class="whatsapp-panel-brand" aria-hidden="true">V</span>
+      <img class="whatsapp-panel-brand" src="/assets/vixoria-mark.svg" alt="" aria-hidden="true" width="40" height="40" />
       <div><strong>Vixoria Technologies</strong><span>Message us on WhatsApp</span></div>
       <button class="whatsapp-close" type="button" aria-label="Close WhatsApp panel">&times;</button>
     </div>

@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 64" role="img" aria-labelledby="title">
-  <title id="title">Vixoria monogram</title>
-  <path d="M2 10h12l16 33 16-33h12L36 55H24L2 10Z" fill="#142a51"/>
-  <path d="M48 10h12l6 10 6-10h13L73 30l13 24H73l-7-13-8 13H45l14-24L48 10Z" fill="#2457df"/>
-  <path d="m59 30 7-10 7 10-7 11-7-11Z" fill="#73aeff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 56" role="img" aria-labelledby="title">
+  <title id="title">Vixoria geometric mark</title>
+  <path d="M0 0h18.7l12.5 23.5-10.2 16.1L0 0Z" fill="#08264c"/>
+  <path d="M34 20.5 45.4 0H64l-6.6 10.7L34 20.5Z" fill="#f6a914"/>
+  <path d="m34.1 23.1 21.6-8.8L30.4 56 22.5 42.3l11.6-19.2Z" fill="#0872c4"/>
+  <path d="m24.8 46.3 20.7-15.2L30.4 56l-5.6-9.7Z" fill="#064d91" opacity=".48"/>
 </svg>
