@@ -25,6 +25,7 @@ export const serviceGroups = [
       ["Frontend Dev", "frontend-development", "Build the part of your software that customers and teams use every day.", ["Responsive interfaces", "Forms and dashboards", "Accessible component systems"]],
       ["Backend Dev", "backend-development", "Build the services, data flows and integrations behind a reliable product.", ["APIs and business rules", "Database-backed workflows", "Authentication and integrations"]],
       ["Software Dev", "software-development", "Turn a specific business problem into a working web application or internal system.", ["Customer and staff portals", "Custom business workflows", "Support after launch"]],
+      ["Dedicated Developers", "staff-augmentation", "Add developers or testers to your team for a defined project period.", ["Development and QA skills", "Technical fit reviewed before introduction", "Work within your tools and process"]],
       ["Golang", "golang", "Consider Go for back-end services where simple deployment and efficient processing matter.", ["Service APIs", "Data processing", "System integrations"]],
       ["Next.js", "nextjs", "Build React-based websites and applications with a practical approach to rendering and content.", ["Content-rich websites", "Web application interfaces", "Server-backed features"]],
       ["React.js", "reactjs", "Create interactive interfaces that make complex tasks easier to complete.", ["Dashboards and portals", "Reusable UI components", "Existing application improvements"]],

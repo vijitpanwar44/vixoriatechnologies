@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 244 64" role="img" aria-labelledby="title">
+  <title id="title">Vixoria Technologies</title>
+  <path d="M2 10h12l16 33 16-33h12L36 55H24L2 10Z" fill="#142a51"/>
+  <path d="M48 10h12l6 10 6-10h13L73 30l13 24H73l-7-13-8 13H45l14-24L48 10Z" fill="#2457df"/>
+  <path d="m59 30 7-10 7 10-7 11-7-11Z" fill="#73aeff"/>
+  <text x="102" y="37" fill="#0d1117" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" letter-spacing="-1.4">Vixoria</text>
+  <text x="103" y="53" fill="#2457df" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2">TECHNOLOGIES</text>
+</svg>

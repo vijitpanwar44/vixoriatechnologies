@@ -36,20 +36,21 @@ function renderHeader() {
   const mobileGroups = serviceGroups.map((group) => `<details class="mobile-group"><summary>${escapeHtml(group.name)}</summary>${group.items.map(([name, slug]) => `<a href="/services/${slug}/">${escapeHtml(name)}</a>`).join("")}</details>`).join("");
   return `<header class="site-header" id="top">
     <div class="container nav-inner">
-      <a class="brand" href="/" aria-label="Vixoria Technologies home"><span class="brand-mark" aria-hidden="true">V</span><span>Vixoria <strong>Technologies</strong></span></a>
+      <a class="brand" href="/" aria-label="Vixoria Technologies home"><img class="brand-logo" src="/assets/vixoria-logo.svg" alt="" width="230" height="60" /></a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <div class="nav-drop"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="services-panel">Services</button><div class="mega-panel services-panel" id="services-panel"><div class="mega-top"><div><strong>What we can build</strong><p>Explore services by the work your project needs.</p></div><a href="/services/">View all services →</a></div><div class="mega-grid">${groupLinks()}</div></div></div>
+        <div class="nav-drop"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="services-panel">Services</button><div class="mega-panel services-panel" id="services-panel"><div class="mega-top"><div><strong>How we can help</strong><p>Build a project or add development capacity to your team.</p></div><a href="/services/">View all services →</a></div><div class="mega-grid">${groupLinks()}</div></div></div>
+        <a href="/services/staff-augmentation/">Hire developers</a>
         <div class="nav-drop"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="industries-panel">Industries</button><div class="mega-panel industries-panel" id="industries-panel"><div class="mega-top"><div><strong>Where software can help</strong><p>Practical ideas for different business workflows.</p></div><a href="/industries/">View all industries →</a></div><div class="industry-menu-grid">${industries.map((item) => `<a href="${industryUrl(item)}">${escapeHtml(item.name)}</a>`).join("")}</div></div></div>
-        <a href="/work/">Case studies</a><a href="/#about">About</a><a class="nav-cta" href="/#contact">Free consultation</a>
+        <a href="/work/">Case studies</a><a class="nav-cta" href="/#contact">Free consultation</a>
       </nav>
       <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a class="mobile-main-link" href="/services/">All services</a>${mobileGroups}<a class="mobile-main-link" href="/industries/">All industries</a><details class="mobile-group"><summary>Industries</summary>${industries.map((item) => `<a href="${industryUrl(item)}">${escapeHtml(item.name)}</a>`).join("")}</details><a class="mobile-main-link" href="/work/">Case studies</a><a href="/#about">About</a><a href="/#contact">Free consultation</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a class="mobile-main-link" href="/services/">All services</a><a class="mobile-main-link" href="/services/staff-augmentation/">Hire developers</a>${mobileGroups}<a class="mobile-main-link" href="/industries/">All industries</a><details class="mobile-group"><summary>Industries</summary>${industries.map((item) => `<a href="${industryUrl(item)}">${escapeHtml(item.name)}</a>`).join("")}</details><a class="mobile-main-link" href="/work/">Case studies</a><a href="/#about">About</a><a href="/#contact">Free consultation</a></nav>
   </header>`;
 }
 
 function renderFooter() {
-  return `<footer><div class="container footer-inner"><a class="brand" href="/" aria-label="Vixoria Technologies home"><span class="brand-mark">V</span><span>Vixoria <strong>Technologies</strong></span></a><nav class="footer-links" aria-label="Footer"><a href="/services/">Services</a><a href="/industries/">Industries</a><a href="/work/">Case Studies</a><a href="/#contact">Contact</a></nav><p>© <span id="year"></span> Vixoria Technologies</p></div></footer>`;
+  return `<footer><div class="container footer-inner"><a class="brand" href="/" aria-label="Vixoria Technologies home"><img class="brand-logo" src="/assets/vixoria-logo.svg" alt="" width="230" height="60" /></a><nav class="footer-links" aria-label="Footer"><a href="/services/">Services</a><a href="/services/staff-augmentation/">Hire developers</a><a href="/industries/">Industries</a><a href="/work/">Case Studies</a><a href="/#contact">Contact</a></nav><p>© <span id="year"></span> Vixoria Technologies</p></div></footer>`;
 }
 
 function layout({ title, description, path, body }) {
@@ -57,12 +58,12 @@ function layout({ title, description, path, body }) {
   const safeDescription = escapeHtml(description);
   const canonical = `${origin}${path}`;
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>${safeTitle} | Vixoria Technologies</title><meta name="description" content="${safeDescription}" /><link rel="canonical" href="${canonical}" /><meta name="theme-color" content="#ffffff" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="/styles.css" /><link rel="stylesheet" href="/site-pages.css" /></head>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>${safeTitle} | Vixoria Technologies</title><meta name="description" content="${safeDescription}" /><link rel="canonical" href="${canonical}" /><meta name="theme-color" content="#ffffff" /><link rel="icon" href="/assets/vixoria-mark.svg" type="image/svg+xml" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="/styles.css" /><link rel="stylesheet" href="/site-pages.css" /></head>
 <body>${renderHeader()}<main>${body}</main>${renderFooter()}<script src="/script.js"></script></body></html>`;
 }
 
-function contactBand(label = "Tell us about your project") {
-  return `<section class="page-cta"><div class="container page-cta-inner"><div><p class="section-label light">Start a conversation</p><h2>${escapeHtml(label)}</h2><p>Share the problem you want to solve. We’ll help identify a practical next step.</p></div><a class="button button-primary" href="/#contact">Discuss your project →</a></div></section>`;
+function contactBand(label = "Tell us about your project", description = "Share the problem you want to solve. We’ll help identify a practical next step.", action = "Discuss your project") {
+  return `<section class="page-cta"><div class="container page-cta-inner"><div><p class="section-label light">Start a conversation</p><h2>${escapeHtml(label)}</h2><p>${escapeHtml(description)}</p></div><a class="button button-primary" href="/#contact">${escapeHtml(action)} →</a></div></section>`;
 }
 
 function card({ title, description, url, label }) {
@@ -72,13 +73,42 @@ function card({ title, description, url, label }) {
 function catalogPage(type) {
   const isService = type === "services";
   const title = isService ? "Software services for the work ahead" : "Software ideas for your industry";
-  const description = isService ? "Explore Vixoria's web, ecommerce, software, app, AI and data services." : "Explore practical software, website and app ideas for 15 industries.";
-  const intro = isService ? "From websites and customer platforms to internal systems and data work, choose an area to see what a project could include." : "Every business has its own workflows. These pages show the kinds of digital experiences and tools we can discuss for each industry.";
+  const description = isService ? "Explore Vixoria's software projects and dedicated developer and tester support." : "Explore practical software, website and app ideas for 15 industries.";
+  const intro = isService ? "We can build a complete software project or help your existing team add a developer. Explore the work you need." : "Every business has its own workflows. These pages show the kinds of digital experiences and tools we can discuss for each industry.";
   const sections = isService ? serviceGroups.map((group) => `<section class="catalog-section" id="${group.slug}"><div class="catalog-section-head"><div><p class="section-label">Services</p><h2>${escapeHtml(group.name)}</h2></div><p>${escapeHtml(group.description)}</p></div><div class="catalog-grid">${services.filter((item) => item.groupSlug === group.slug).map((item) => card({ title: item.name, description: item.description, url: serviceUrl(item), label: group.name })).join("")}</div></section>`).join("") : `<section class="catalog-section" id="all-industries"><div class="catalog-section-head"><div><p class="section-label">Industries</p><h2>Find your field</h2></div><p>Start with a business need, then we can shape the right website, app or internal tool.</p></div><div class="catalog-grid">${industries.map((item) => card({ title: item.name, description: item.description, url: industryUrl(item), label: "Industry" })).join("")}</div></section>`;
   return layout({ title, description, path: `/${type}/`, body: `<section class="page-hero"><div class="container"><p class="breadcrumbs"><a href="/">Home</a> / ${isService ? "Services" : "Industries"}</p><p class="eyebrow"><span></span>${isService ? "What we do" : "Who we help"}</p><h1>${title}</h1><p class="page-intro">${intro}</p></div></section><div class="container catalog-sections">${sections}</div>${contactBand()}` });
 }
 
+const staffSkills = [
+  ["BACK END", ".NET / C#", "APIs, business applications and integrations."],
+  ["FRONT END", "React / TypeScript", "Product interfaces, dashboards and web apps."],
+  ["FRONT END", "Angular", "Structured interfaces for larger applications."],
+  ["BACK END", "Java / Spring Boot", "Services, APIs and enterprise systems."],
+  ["BACK END", "Node.js", "JavaScript services and real-time features."],
+  ["BACK END", "Python", "APIs, automation and data workflows."],
+  ["MOBILE", "Mobile development", "iOS and Android apps, including cross-platform work."],
+  ["DATA", "SQL / Data engineering", "Databases, pipelines and reporting-ready data."],
+  ["CLOUD", "AWS / Azure", "Cloud applications, infrastructure and deployment."],
+  ["DELIVERY", "DevOps", "CI/CD, containers and release workflows."],
+  ["TESTING", "QA / Test automation", "Manual testing and reliable automated checks."],
+  ["AI", "AI integration", "Useful AI features added to existing products and workflows."],
+];
+
+function staffAugmentationPage() {
+  return layout({
+    title: "Dedicated Developers and Testers",
+    description: "Add developers and testers to your existing team for a defined project period. Explore .NET, React, Python, cloud, QA and other skills.",
+    path: "/services/staff-augmentation/",
+    body: `<section class="page-hero staff-hero"><div class="container"><p class="breadcrumbs"><a href="/">Home</a> / <a href="/services/">Services</a> / Dedicated Developers</p><p class="eyebrow"><span></span>Development capacity</p><h1>Add a developer or tester to your team.</h1><p class="page-intro">When a live project needs extra capacity, Vixoria can help you find developers and testers who work within your team, tools and priorities.</p><div class="hero-actions"><a class="button button-primary" href="/#contact">Tell us the role →</a><a class="text-link" href="#how-it-works">How it works <span>↓</span></a></div></div></section>
+    <section class="staff-section"><div class="container"><div class="staff-section-heading"><p class="section-label">Development and testing</p><h2>The development skills we know best.</h2><p>Tell us the role and stack you need. We review technical fit before arranging an introduction.</p></div><div class="staff-role-grid">${staffSkills.map(([category, name, description], index) => `<div class="staff-role-card"><span>${String(index + 1).padStart(2, "0")} / ${escapeHtml(category)}</span><h3>${escapeHtml(name)}</h3><p>${escapeHtml(description)}</p></div>`).join("")}</div></div></section>
+    <section class="staff-section staff-process" id="how-it-works"><div class="container"><div class="staff-section-heading"><p class="section-label">How it works</p><h2>A straightforward way to add capacity.</h2></div><div class="staff-step-grid"><div><span>01</span><h3>Tell us what you need</h3><p>Share the role, skills, working hours and the project timeline.</p></div><div><span>02</span><h3>Meet a suitable specialist</h3><p>We review technical fit, then you interview the person before deciding.</p></div><div><span>03</span><h3>Work as one team</h3><p>The person joins your tools and process. Your team sets daily priorities.</p></div></div></div></section>
+    <section class="staff-section"><div class="container staff-two-ways"><div><p class="section-label">Built around your team</p><h2>Your project stays in your hands.</h2></div><div><p>Staff augmentation works when you already manage the project and need more development or testing capacity. We can agree on hours, overlap and duration around the role.</p><p>If you want Vixoria to own delivery instead, <a href="/services/software-development/">explore our software development service</a>.</p></div></div></section>
+    ${contactBand("Need a developer or tester?", "Tell us the role, technology and timing. We'll discuss whether Vixoria can help and what the next step would be.", "Discuss a role")}`,
+  });
+}
+
 function detailPage(item, type) {
+  if (type === "services" && item.slug === "staff-augmentation") return staffAugmentationPage();
   const isService = type === "services";
   const category = isService ? item.group : "Industry";
   const parent = isService ? "/services/" : "/industries/";
